@@ -62,7 +62,7 @@ def slider(n, dict_zeichen):
     liste_zeichen = list(dict_zeichen)
     liste_idx = 0
     req_erfuellt = False
-    
+
     # Muss alle Regeln von Tic-Tac-Toe verfolgen 
     for key in dict_values().keys():
         if key != "_":
@@ -80,18 +80,7 @@ def slider(n, dict_zeichen):
                         break
 
             for j in range(0, n):
-                if liste_zeichen[(j*n)+j] == key:
-                    liste_idx = liste_idx+1
-                    if liste_idx == n:
-                        liste_idx = 0
-                        req_erfuellt = True
-                        break
-                else:
-                    liste_idx = 0
-                    break
-
-            for k in range(0, n):
-                if liste_zeichen[((k+1)*n)-desc] == key:
+                if liste_zeichen[(j*n)+j] == key or liste_zeichen[((j+1)*n)-desc] == key or liste_zeichen[j*n] == key:
                     liste_idx = liste_idx+1
                     if liste_idx == n:
                         liste_idx = 0
