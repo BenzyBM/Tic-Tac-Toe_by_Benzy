@@ -26,7 +26,6 @@ import random as rand
 # globale Variablen
 computer_coin = rand.randint(0, 1)
 
-
 def Ermittlung_Rundenstart():
     spieler_coin = input("Kopf oder Zahl? : ")
 
@@ -117,11 +116,13 @@ def map(x, y):
     while runde:
         if slider(x, map_x.values()) == True:
             runde = False
+            print("Herzlichen Glückwunsch, Sie haben gewonnen!\n")
             break
 
         if wechsel == False:
             print("Wo möchten Sie Ihr Zeichen setzen? : ")
             ziel = int(input())
+            
 
             while runde_spieler:
                 if map_x[ziel-1] != key_computer and map_x[ziel-1] != key_spieler:
@@ -155,7 +156,7 @@ def map(x, y):
                 print(list(map_x.values())[(i*y):((i+1)*y)])
 
 def Spiel():
-    n = 3
+    n = 4
     map(n, n)
 
 Spiel()
