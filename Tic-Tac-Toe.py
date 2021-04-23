@@ -26,6 +26,7 @@ import random as rand
 # globale Variablen
 computer_coin = rand.randint(0, 1)
 
+
 def Ermittlung_Rundenstart():
     spieler_coin = input("Kopf oder Zahl? : ")
 
@@ -68,18 +69,19 @@ def slider(n, dict_zeichen):
     for key in dict_values().keys():
         if key != "_":
             for i in range(0, n):
-                #for x in range(i*n, ((i+1)*n)):
-                #    if liste_zeichen[x] == key:
-                #        liste_idx = liste_idx+1
-                #        if liste_idx == n:
-                #            liste_idx = 0
-                #            req_erfuellt = True
-                #            break
-                #    else:
-                #        liste_idx = 0
-                #        break
+                desc = 1
+                for x in range(i*n, ((i+1)*n)):
+                    if liste_zeichen[x] == key:
+                        liste_idx = liste_idx+1
+                        if liste_idx == n:
+                            liste_idx = 0
+                            req_erfuellt = True
+                            break
+                    else:
+                        liste_idx = 0
+                        break
 
-                if liste_zeichen[(i*n)+i] == key:
+                if liste_zeichen[((i+1)*n)-desc] == key or liste_zeichen[i*n] == key or liste_zeichen[(i*n)+i] == key:
                     liste_idx = liste_idx+1
                     if liste_idx == n:
                         liste_idx = 0
@@ -88,6 +90,7 @@ def slider(n, dict_zeichen):
                 else:
                     liste_idx = 0
                     break
+                desc = desc + 1
         else:
             continue
 
