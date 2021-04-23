@@ -27,6 +27,7 @@ import random as rand
 print("Bitte geben Sie die Göße des Spielfelds ein: ")
 groesse_spielfeld = int(input())
 
+# COINFLIP FÜR RUNDENSTART
 def Ermittlung_Rundenstart():
     spieler_coin = input("Kopf oder Zahl? : ")
 
@@ -44,12 +45,14 @@ def Ermittlung_Rundenstart():
 
     return spieler_start
     
+# BIBLIOTHEK FÜR DIE SPIELFIGUREN
 def dict_values():
     werte_zeichen = {"O" : 0,
                      "X" : 1,
                      "_" : 2}
     return werte_zeichen
 
+# INITIALISIERUNG DER GRÖßE DES FELDS
 def init_x_header(x):
     for key, value in dict_values().items():
         if value == 2:
@@ -59,12 +62,13 @@ def init_x_header(x):
         init_x[i] = zeichen_neutral
     return init_x
 
+# SLIDER ZUR ÜBERPÜFUNG DER REGELN
 def slider(n, dict_zeichen):
     liste_zeichen = list(dict_zeichen)
     liste_idx = 0
     req_erfuellt = False
 
-    # Muss alle Regeln von Tic-Tac-Toe verfolgen 
+    # REGELN
     for key in dict_values().keys():
         if key != "_":
             desc = 1
@@ -96,6 +100,7 @@ def slider(n, dict_zeichen):
 
     return req_erfuellt   
 
+# INITIALISIERUNG DES SPIELS, BZW DES FELDES
 def map(x, y):
     runde = True
     map_x = init_x_header(x * y)
@@ -125,7 +130,6 @@ def map(x, y):
             print("Wo möchten Sie Ihr Zeichen setzen? : ")
             ziel = int(input())
             
-
             while runde_spieler:
                 if map_x[ziel-1] != key_computer and map_x[ziel-1] != key_spieler:
                     if ziel <= len(map_x):
