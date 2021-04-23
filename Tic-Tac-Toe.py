@@ -24,7 +24,8 @@
 import random as rand
 
 # globale Variablen
-
+print("Bitte geben Sie die Göße des Spielfelds ein: ")
+groesse_spielfeld = int(input())
 
 def Ermittlung_Rundenstart():
     spieler_coin = input("Kopf oder Zahl? : ")
@@ -99,21 +100,20 @@ def map(x, y):
     runde = True
     map_x = init_x_header(x * y)
     wechsel = False
+    runde_spieler = False
     runde_computer = False
-    runde_spieler = True
-    #runde_spieler = Ermittlung_Rundenstart()
-
-    # Muss noch korrigiert werden
     
-    n_idx = x
+    if Ermittlung_Rundenstart() == True:
+        runde_spieler = True
+    else:
+        runde_computer = True
 
     for key, value in dict_values().items():
         if value == 0:
             key_spieler = key
         if value == 1:
+
             key_computer = key
-        #else:
-        #    key_neutral = key
 
     while runde:
         if slider(x, map_x.values()) == True:
@@ -149,14 +149,13 @@ def map(x, y):
                     map_x[i] = key_computer
                     runde_computer = False
 
-
             wechsel = False
             runde_spieler = True
             for i in range(0, y):
                 print(list(map_x.values())[(i*y):((i+1)*y)])
 
 def Spiel():
-    n = 3
+    n = groesse_spielfeld
     map(n, n)
 
 Spiel()
