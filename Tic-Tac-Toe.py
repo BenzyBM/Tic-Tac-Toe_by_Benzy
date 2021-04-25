@@ -25,18 +25,14 @@ def Ermittlung_Rundenstart():
 # BIBLIOTHEK FÜR DIE SPIELFIGUREN
 def dict_values():
     werte_zeichen = {"O" : 0,
-                     "X" : 1,
-                     "_" : 2}
+                     "X" : 1}
     return werte_zeichen
 
 # INITIALISIERUNG DER GRÖßE DES FELDS
 def init_x_header(x):
-    for key, value in dict_values().items():
-        if value == 2:
-            zeichen_neutral = key
     init_x = {}
     for i in range(x):
-        init_x[i] = zeichen_neutral
+        init_x[i] = " "
     return init_x
 
 # SLIDER ZUR ÜBERPÜFUNG DER REGELN
@@ -46,9 +42,9 @@ def slider(n, dict_zeichen):
     req_erfuellt = False
 
     for key in dict_values().keys():
-        if key != "_":
+        if key == "X" or key == "O":
             desc = 1
-            for i in range(0, n):
+            for i in range(n):
                 desc = 1
                 for x in range(i*n, ((i+1)*n)):
                     if liste_zeichen[x] == key:
@@ -61,7 +57,7 @@ def slider(n, dict_zeichen):
                         liste_idx = 0
                         break
 
-            for i in range(0, n):                
+            for i in range(n):                
                 if liste_zeichen[((i+1)*n)-desc] == key:
                     liste_idx = liste_idx+1
                     if liste_idx == n:
@@ -73,8 +69,8 @@ def slider(n, dict_zeichen):
                     break
                 desc = desc + 1
 
-            for i in range(0, n):
-                for j in range(0, n):
+            for i in range(n):
+                for j in range(n):
                     if liste_zeichen[(j*n)+i] == key:
                         liste_idx = liste_idx+1
                         if liste_idx == n:
@@ -85,7 +81,7 @@ def slider(n, dict_zeichen):
                         liste_idx = 0
                         break
 
-            for i in range(0, n):
+            for i in range(n):
                 if liste_zeichen[(i*n)+i] == key:
                     liste_idx = liste_idx+1
                     if liste_idx == n:
@@ -147,8 +143,8 @@ def map(x, y):
                     print("Bitte eine gültige Zahl zwischen 1 und " + str(len(map_x)) + " angeben")
                     break
                 
-        for i in range(0, y):
-            print(list(map_x.values())[(i*y):((i+1)*y)], flush=True)
+            for i in range(y):
+                print(list(map_x.values())[(i*y):((i+1)*y)], flush=True)
 
         else:
             print("Computer: ")
@@ -160,7 +156,7 @@ def map(x, y):
 
             wechsel = False
             runde_spieler = True
-            for i in range(0, y):
+            for i in range(y):
                 print(list(map_x.values())[(i*y):((i+1)*y)])
 
 def Spiel():
