@@ -45,11 +45,6 @@ def slider(n, dict_zeichen):
     liste_idx = 0
     req_erfuellt = False
 
-    # REGELN
-
-    # TODO
-    # - Regeln wieder bearbeiten, damit sie sich nicht vermischen
-
     for key in dict_values().keys():
         if key != "_":
             desc = 1
