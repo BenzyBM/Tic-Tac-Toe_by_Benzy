@@ -46,6 +46,10 @@ def slider(n, dict_zeichen):
     req_erfuellt = False
 
     # REGELN
+
+    # TODO
+    # - Regeln wieder bearbeiten, damit sie sich nicht vermischen
+
     for key in dict_values().keys():
         if key != "_":
             desc = 1
@@ -101,15 +105,18 @@ def slider(n, dict_zeichen):
 
 # INITIALISIERUNG DES SPIELS, BZW DES FELDES
 def map(x, y):
-    runde = True
+    
     map_x = init_x_header(x * y)
     wechsel = False
+    runde = True
     runde_spieler = False
     runde_computer = False
     
     if Ermittlung_Rundenstart() == True:
+        wechsel = False
         runde_spieler = True
     else:
+        wechsel = True
         runde_computer = True
 
     for key, value in dict_values().items():
@@ -130,17 +137,17 @@ def map(x, y):
             ziel = int(input())
             
             while runde_spieler:
-                if map_x[ziel-1] != key_computer and map_x[ziel-1] != key_spieler:
-                    if ziel <= len(map_x):
+                if ziel <= len(map_x):
+                    if map_x[ziel-1] != key_computer and map_x[ziel-1] != key_spieler:
                         map_x[ziel-1] = key_spieler
                         wechsel = True
                         runde_spieler = False
                         runde_computer = True
                     else:
-                        print("Bitte eine gültige Zahl zwischen 0 und " + str(len(map_x-1)) + " angeben")
+                        print("Bitte versuchen Sie es nochmal!")
                         break
                 else:
-                    print("Bitte versuchen Sie es nochmal!")
+                    print("Bitte eine gültige Zahl zwischen 1 und " + str(len(map_x)) + " angeben")
                     break
                 
         for i in range(0, y):
