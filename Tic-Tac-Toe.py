@@ -45,7 +45,6 @@ def slider(n, dict_zeichen):
         if key == "X" or key == "O":
             desc = 1
             for i in range(n):
-                desc = 1
                 for x in range(i*n, ((i+1)*n)):
                     if liste_zeichen[x] == key:
                         liste_idx = liste_idx+1
