@@ -71,13 +71,13 @@ def slider(n, dict_zeichen):
             for j in range(n):
                 if liste_zeichen[(j*n)+i] == key:
                     liste_idx = liste_idx+1
-                    if liste_idx == n:
-                        liste_idx = 0
-                        req_erfuellt = True
-                        break
-                else:
+                if liste_idx == n:
                     liste_idx = 0
+                    req_erfuellt = True
                     break
+            else:
+                liste_idx = 0
+                break
 
         for i in range(n):
             if liste_zeichen[(i*n)+i] == key:
@@ -118,7 +118,7 @@ def map(x, y):
     while runde:
         if slider(x, map_x.values()) == True:
             runde = False
-            print("Herzlichen Glückwunsch, Sie haben gewonnen!\n")
+            print("Das Spiel ist hiermit beendet\n")
             break
 
         if wechsel == False:
@@ -139,8 +139,8 @@ def map(x, y):
                     print("Bitte eine gültige Zahl zwischen 1 und " + str(len(map_x)) + " angeben")
                     break
                 
-            for i in range(y):
-                print(list(map_x.values())[(i*y):((i+1)*y)], flush=True)
+        for i in range(0, y):
+            print(list(map_x.values())[(i*y):((i+1)*y)], flush=True)
 
         else:
             print("Computer: ")
@@ -152,7 +152,7 @@ def map(x, y):
 
             wechsel = False
             runde_spieler = True
-            for i in range(y):
+            for i in range(0, y):
                 print(list(map_x.values())[(i*y):((i+1)*y)])
 
 def Spiel():
