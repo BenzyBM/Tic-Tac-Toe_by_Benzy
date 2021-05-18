@@ -43,8 +43,8 @@ def slider(n, dict_zeichen):
 
     for key in dict_values().keys():
         desc = 1
+        # Überprüfung horizontal
         for i in range(n):
-            # Überprüfung auf 
             for x in range(i*n, ((i+1)*n)):
                 if liste_zeichen[x] == key:
                     liste_idx = liste_idx+1
@@ -57,19 +57,7 @@ def slider(n, dict_zeichen):
                     liste_idx = 0
                     break
 
-        for i in range(n):                
-            if liste_zeichen[((i+1)*n)-desc] == key:
-                liste_idx = liste_idx+1
-                if liste_idx == n:
-                    liste_idx = 0
-                    req_erfuellt[0] = True
-                    req_erfuellt[1] = key
-                    break
-            else:
-                liste_idx = 0
-                break
-            desc = desc + 1
-
+        # überprüfung vertikal
         for i in range(n):
             for j in range(n):
                 if liste_zeichen[(j*n)+i] == key:
@@ -83,6 +71,7 @@ def slider(n, dict_zeichen):
                 liste_idx = 0
                 break
 
+        # Überprüfung diagonal nach rechts
         for i in range(n):
             if liste_zeichen[(i*n)+i] == key:
                 liste_idx = liste_idx+1
@@ -94,6 +83,20 @@ def slider(n, dict_zeichen):
             else:
                 liste_idx = 0
                 break
+
+        # Überprüfung diagonal nach links
+        for i in range(n):                
+            if liste_zeichen[((i+1)*n)-desc] == key:
+                liste_idx = liste_idx+1
+                if liste_idx == n:
+                    liste_idx = 0
+                    req_erfuellt[0] = True
+                    req_erfuellt[1] = key
+                    break
+            else:
+                liste_idx = 0
+                break
+            desc = desc + 1
 
     return req_erfuellt   
 
