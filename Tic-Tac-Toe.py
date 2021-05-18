@@ -28,7 +28,7 @@ def dict_values():
                      "X" : 1}
     return werte_zeichen
 
-# INITIALISIERUNG DER GRÖßE DES FELDS
+# INITIALISIERUNG FÜR DIE GRÖßE DES FELDS
 def init_x_header(x):
     init_x = {}
     for i in range(x):
@@ -39,17 +39,19 @@ def init_x_header(x):
 def slider(n, dict_zeichen):
     liste_zeichen = list(dict_zeichen)
     liste_idx = 0
-    req_erfuellt = False
+    req_erfuellt = [False, dict_zeichen]
 
     for key in dict_values().keys():
         desc = 1
         for i in range(n):
+            # Überprüfung auf 
             for x in range(i*n, ((i+1)*n)):
                 if liste_zeichen[x] == key:
                     liste_idx = liste_idx+1
                     if liste_idx == n:
                         liste_idx = 0
-                        req_erfuellt = True
+                        req_erfuellt[0] = True
+                        req_erfuellt[1] = key
                         break
                 else:
                     liste_idx = 0
@@ -60,7 +62,8 @@ def slider(n, dict_zeichen):
                 liste_idx = liste_idx+1
                 if liste_idx == n:
                     liste_idx = 0
-                    req_erfuellt = True
+                    req_erfuellt[0] = True
+                    req_erfuellt[1] = key
                     break
             else:
                 liste_idx = 0
@@ -73,7 +76,8 @@ def slider(n, dict_zeichen):
                     liste_idx = liste_idx+1
                 if liste_idx == n:
                     liste_idx = 0
-                    req_erfuellt = True
+                    req_erfuellt[0] = True
+                    req_erfuellt[1] = key
                     break
             else:
                 liste_idx = 0
@@ -84,7 +88,8 @@ def slider(n, dict_zeichen):
                 liste_idx = liste_idx+1
                 if liste_idx == n:
                     liste_idx = 0
-                    req_erfuellt = True
+                    req_erfuellt[0] = True
+                    req_erfuellt[1] = key
                     break
             else:
                 liste_idx = 0
@@ -112,13 +117,15 @@ def map(x, y):
         if value == 0:
             key_spieler = key
         if value == 1:
-
             key_computer = key
 
     while runde:
-        if slider(x, map_x.values()) == True:
+        if slider(x, map_x.values())[0] == True:
             runde = False
-            print("Das Spiel ist hiermit beendet\n")
+            if(slider(x, map_x.values())[1] == key_spieler):
+                print("Der Spieler hat gewonnen\n")
+            else: 
+                print("Der Computer hat gewonnen\n")
             break
 
         if wechsel == False:
