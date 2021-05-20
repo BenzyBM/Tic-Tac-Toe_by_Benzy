@@ -3,7 +3,7 @@
 
  Willkommen in meinem Tic-Tac-Toe Spiel.
  
- Die Regeln sind einfach:  
+ Die Regeln sind einfach:\n\r  
     -Wähle eine Zahl zwischen 1 und 9 
     -Wenn die Zahl größer oder gleich groß ist, wie die 
         von dem Computer, dann fangen Sie an. Ansonsten der PC
