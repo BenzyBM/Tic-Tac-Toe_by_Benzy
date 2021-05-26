@@ -148,7 +148,7 @@ def map(x, y):
     while runde:
 
         # Es wird jedes Mal am Anfang der Runde geschaut, ob jemand
-        # gewonnen hat.
+        # gewonnen hat. 
         if slider(x, map_x.values())[0] == True:
             for i in range(0, y):
                 print(list(map_x.values())[(i*y):((i+1)*y)])
@@ -170,7 +170,8 @@ def map(x, y):
             # damit das Spiel verstänlicher ist.
             while runde_spieler:
                 if ziel <= len(map_x):
-                    # Sobald das ausgewählte Feld nicht besetzt ist, wird das Zeichen in das
+
+                    # Sofern das ausgewählte Feld nicht besetzt ist, wird das Zeichen in das
                     # Feld eingesetzt, ansonsten muss der Spieler erneut auswählen.
                     if map_x[ziel-1] != key_computer and map_x[ziel-1] != key_spieler:
                         map_x[ziel-1] = key_spieler
@@ -180,6 +181,7 @@ def map(x, y):
                     else:
                         print("Bitte versuchen Sie es nochmal!")
                         break
+
                 # Die, vom Spieler angegebene Zahl muss natürlich von 1 bis n^n sein,
                 # sonst liegt sie außerhalb der Liste des Spielfelds
                 else:
@@ -188,6 +190,7 @@ def map(x, y):
 
         else:
             print("Computer: ")
+            
             # Der Computer schaut sich die Liste an und wählt ein Feld aus,
             # das weder vom Spieler noch von sich selbst belegt ist.
             while runde_computer:
