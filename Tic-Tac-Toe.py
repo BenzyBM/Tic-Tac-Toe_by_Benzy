@@ -11,7 +11,7 @@ def Ermittlung_Rundenstart():
     # Kopf hat den Wert 0 und Zahl hat den Wert 1. Wenn der Spieler
     # Kopf oder Zahl schreibt und der Wert ebenfalls übereinstimmt, 
     # dann darf der Spieler anfangen. Ansonsten setzt der PC 
-    # automatisch sein Zeichen.
+    # automatisch sein erstes Zeichen.
 
     if spieler_coin == "Kopf" and (rand.randint(0, 1)) == 0:
         print("Es ist Kopf. Sie fangen an!!!")
@@ -43,11 +43,15 @@ def init_x_header(x):
 # SLIDER ZUR ÜBERPÜFUNG DER REGELN
 def slider(n, dict_zeichen):
     liste_zeichen = list(dict_zeichen)
+
+    # liste_idx sorgt dafür, dass die Regeln immer auf n
+    # aufeinanderfolgende Zeichen überprüft werden
     liste_idx = 0
     req_erfuellt = [False, dict_zeichen]
 
     for key in dict_values().keys():
         desc = 1
+
         # Überprüfung horizontal
         for i in range(n):
             for x in range(i*n, ((i+1)*n)):
@@ -62,7 +66,7 @@ def slider(n, dict_zeichen):
                     liste_idx = 0
                     break
 
-        # überprüfung vertikal
+        # Überprüfung vertikal
         for i in range(n):
             for j in range(n):
                 if liste_zeichen[(j*n)+i] == key:
@@ -127,7 +131,8 @@ def map(x, y):
     runde_spieler = False
     runde_computer = False
     
-    # Hier wird geschaut, wer mit dem Spielen anfängt.
+    # Hier wird mithilfe der Funktion für den Münzenwurf geschaut, 
+    # wer mit dem Spielen anfängt.
 
     if Ermittlung_Rundenstart() == True:
         wechsel = False
@@ -190,7 +195,7 @@ def map(x, y):
 
         else:
             print("Computer: ")
-            
+
             # Der Computer schaut sich die Liste an und wählt ein Feld aus,
             # das weder vom Spieler noch von sich selbst belegt ist.
             while runde_computer:
